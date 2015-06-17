@@ -130,4 +130,39 @@ abstract class SQLQuery {
         
         return 0;
     }
+    
+    
+    function insert($tableName, $columns, $values){
+    	$sql = 'INSERT INTO ' . $tableName . ' (';
+    	
+    	$count = count($columns);
+    	
+    	for($i=0; $i<$count; $i++){
+    		$column=$columns[$i];
+    		if($i==$count-1){
+    			$sql .=   $column . ')';
+    		}else{
+    		$sql .=   $column . ', ';
+    		}
+    	}
+    	
+    	$sql .= ' VALUES (' ;
+    	
+    	for($i=0; $i<$count; $i++){
+    		$value=$values[$i];
+    		if($i==$count-1){
+    			$sql .= '"' . $value. '");';
+    		}else{
+    		$sql .= '"' . $value. '", ';
+    		}
+    	}
+    	
+    	//var_dump($sql);
+    	//die();
+
+        return $this->query($sql);
+
+    
+    }
+    
 }
