@@ -1,2 +1,6 @@
 <?php
-echo $ime;
+
+foreach($gradovi as $grad){
+	echo $grad['id'] . ' ' . $grad['naziv'] . '<br>';
+}
+
