@@ -3,6 +3,7 @@
 class Poslodavac extends Core\Model{
 		
 		
+		
 
 
 }

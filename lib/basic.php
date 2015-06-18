@@ -10,19 +10,19 @@
  *
  * Manages the way in which errors will be reported
  */
-function setReporting()
-{
-    global $config;
-    if (DEVELOPMENT == true) {
-        error_reporting(E_ALL);
-        ini_set('display_errors', 'On');
-    } else {
-        error_reporting(E_ALL);
-        ini_set('display_errors', 'Off');
-        ini_set('log_errors', 'On');
-        ini_set('error_log', ROOT . DS . 'error.log');
-    }
-}
+//function setReporting()
+//{
+//    global $config;
+  //  if (DEVELOPMENT == true) {
+//        error_reporting(E_ALL);
+ //       ini_set('display_errors', 'On');
+    //} else {
+//        error_reporting(E_ALL);
+//        ini_set('display_errors', 'Off');
+//        ini_set('log_errors', 'On');
+//        ini_set('error_log', ROOT . DS . 'error.log');
+    //}
+//}
 
 /**
  * Main call function
@@ -107,5 +107,5 @@ function __autoload($className)
 
 //$inflect = new Core\Inflection;
 
-setReporting();
+//setReporting();
 callHook();

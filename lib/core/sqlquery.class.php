@@ -67,6 +67,8 @@ abstract class SQLQuery {
             $stmt = $this->_dbh->prepare($query);
             $stmt->execute($param);
             $this->_rowCount = $stmt->rowCount();
+            
+            
 
             if ($this->_rowCount == 0) {
                 return false;
