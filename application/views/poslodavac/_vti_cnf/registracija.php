@@ -1,18 +1,18 @@
 vti_encoding:SR|utf8-nl
 vti_author:SR|Sara-PC\\Sara
 vti_modifiedby:SR|Sara-PC\\Sara
-vti_timelastmodified:TR|18 Jun 2015 12:24:47 -0000
+vti_timelastmodified:TR|24 Jun 2015 08:52:55 -0000
 vti_timecreated:TR|17 Jun 2015 10:15:24 -0000
 vti_title:SR|Untitled 1
 vti_extenderversion:SR|12.0.0.0
 vti_backlinkinfo:VX|
-vti_nexttolasttimemodified:TW|18 Jun 2015 12:24:43 -0000
-vti_cacheddtm:TX|18 Jun 2015 12:24:47 -0000
-vti_filesize:IR|2428
+vti_nexttolasttimemodified:TW|24 Jun 2015 08:52:24 -0000
+vti_cacheddtm:TX|24 Jun 2015 08:52:24 -0000
+vti_filesize:IR|5193
 vti_cachedtitle:SR|Untitled 1
 vti_cachedbodystyle:SR|<body>
-vti_cachedlinkinfo:VX|Q|bootstrap.css Q|bootstrap.min.css Q|bootstrap-theme.css Q|bootstrap-theme.min.css A|registracija
-vti_cachedsvcrellinks:VX|NQUS|application/views/poslodavac/bootstrap.css NQUS|application/views/poslodavac/bootstrap.min.css NQUS|application/views/poslodavac/bootstrap-theme.css NQUS|application/views/poslodavac/bootstrap-theme.min.css NAUS|application/views/poslodavac/registracija
+vti_cachedlinkinfo:VX|Q|/public/css/bootstrap/css/bootstrap.css Q|/public/css/bootstrap/css/bootstrap.min.css Q|/public/css/bootstrap/css/bootstrap-theme.css Q|/public/css/bootstrap/css/bootstrap-theme.min.css A|/poslodavac/registracija
+vti_cachedsvcrellinks:VX|NQUS|/public/css/bootstrap/css/bootstrap.css NQUS|/public/css/bootstrap/css/bootstrap.min.css NQUS|/public/css/bootstrap/css/bootstrap-theme.css NQUS|/public/css/bootstrap/css/bootstrap-theme.min.css NAUS|/poslodavac/registracija
 vti_cachedneedsrewrite:BR|false
 vti_cachedhasbots:BR|false
 vti_cachedhastheme:BR|false

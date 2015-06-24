@@ -137,6 +137,7 @@ abstract class SQLQuery {
     function insert($tableName, $columns, $values){
     	$sql = 'INSERT INTO ' . $tableName . ' (';
     	
+        	
     	$count = count($columns);
     	
     	for($i=0; $i<$count; $i++){
@@ -159,8 +160,6 @@ abstract class SQLQuery {
     		}
     	}
     	
-    	//var_dump($sql);
-    	//die();
 
         return $this->query($sql);
 

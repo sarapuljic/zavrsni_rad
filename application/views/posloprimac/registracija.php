@@ -1,116 +1,83 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap-theme.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap-theme.min.css"/>
-
 <title>Untitled 1</title>
 </head>
 
 <body>
+
+	<form method="post" action="/posloprimac/registracija">
 	
-	<form method="post" action="/poslodavac/registracija">
-	
-	<div class="form-group">
 	<label>E-mail</label> 
 	<span>* 
 		<?php if(!empty($errors['e_mail'])): ?>
 			<?php echo $errors['e_mail'];?>
 		<?php endif; ?>
 	</span><br>
-	<input type="text" name="e_mail" class="form-control"/><br>
-	</div>
+	<input type="text" name="e_mail"/><br>
 	
-	<div class="form-group">
+	
 	<label>Lozinka</label> 
 	<span>* 
 		<?php if(!empty($errors['lozinka'])): ?>
 			<?php echo $errors['lozinka'];?>
 		<?php endif; ?>
 	</span><br>
-	<input type="password" name="lozinka" class="form-control"/><br>
-	</div>
+	<input type="password" name="lozinka"/><br>
 	
 	
-	<div class="form-group">
 	<label>Ponovite lozinku</label> 
 	<span>* 
 		<?php if(!empty($errors['ponovite_lozinku'])): ?>
 			<?php echo $errors['ponovite_lozinku'];?>
 		<?php endif; ?>
 	</span><br>
-	<input type="password" name="ponovite_lozinku" class="form-control"/><br>
-	</div>
+	<input type="password" name="ponovite_lozinku"/><br>
 	
-	<label>Ime kontakt osobe</label>
+	
+	<label>Ime</label>
 	<span>* 
-		<?php if(!empty($errors['ime_kontakt_osobe'])): ?>
-			<?php echo $errors['ime_kontakt_osobe'];?>
+		<?php if(!empty($errors['ime'])): ?>
+			<?php echo $errors['ime'];?>
 		<?php endif; ?>
 	</span><br>
-	<input type="text" name="ime_kontakt_osobe"/><br>
+	<input type="text" name="ime"/><br>
 	
 	
-	<label>Prezime kontakt osobe</label>
+	<label>Prezime</label>
 	<span>* 
-		<?php if(!empty($errors['prezime_kontakt_osobe'])): ?>
-			<?php echo $errors['prezime_kontakt_osobe'];?>
+		<?php if(!empty($errors['prezime'])): ?>
+			<?php echo $errors['prezime'];?>
 		<?php endif; ?>
 	</span><br>
-	<input type="text" name="prezime_kontakt_osobe"/><br>
+	<input type="text" name="prezime"/><br>
 
 
-	<label>Vrsta pravnog subjekta</label><span>*
-	<select name="vrsta_pravnog_subjekta">
-		<option value="1" selected="selected">Odaberi</option>
-		<?php foreach($vrsta_pravnog_subjekta as $vps){ ?>
-     		<option value="<?php echo $vps['id']; ?>"><?php echo $vps['naziv_vps']; ?></option> 
-   		<?php } ?>	
-   	</select>		
-   	
-   		<?php if(!empty($errors['vrsta_pravnog_subjekta'])): ?>
-			<?php echo $errors['vrsta_pravnog_subjekta'];?>
-		<?php endif; ?><br>
-		</span>
+	<label>Spol</label>
+	<span>*
+		<input type="radio" name="sex" value="male">Muško</input>
+			<input type="radio" name="sex" value="female">žensko</input><br>	
+   	</span>
 	
 	
-	<label>Djelatnost</label><span>* 
-		<?php if(!empty($errors['djelatnost'])): ?>
-			<?php echo $errors['djelatnost'];?>
+	<label>Datum rođenja</label><span>* 
+		<?php if(!empty($errors['datum_rodjenja'])): ?>
+			<?php echo $errors['datum_rodjenja'];?>
 		<?php endif; ?>
 	</span> <br>
-	<input type="text" name="djelatnost"/><br>
+	<input type="date" name="datum_rodjenja"/><br>
 
 	
-	<label>Naziv tvrtke</label><span>*
-		<?php if(!empty($errors['naziv_tvrtke'])): ?>
-			<?php echo $errors['naziv_tvrtke'];?>
-		<?php endif; ?>
-	
- 	</span><br>
-	<input type="text" name="naziv_tvrtke"/><br>
-
-	
-	<label>OIB tvtke</label><span>* 
-		<?php if(!empty($errors['oib_tvrtke'])): ?>
-			<?php echo $errors['oib_tvrtke'];?>
-		<?php endif; ?>
-	</span><br>
-	<input type="text" name="oib_tvrtke"/><br>
-
-	
-	<label>Adresa</label><span>* 
+	<label>Adresa</label><span>*
 		<?php if(!empty($errors['adresa'])): ?>
 			<?php echo $errors['adresa'];?>
 		<?php endif; ?>
-	</span><br>
+	
+ 	</span><br>
 	<input type="text" name="adresa"/><br>
-
+	
 	
 	<label>Poštanski broj</label><span>* 
 		<?php if(!empty($errors['postanski_broj'])): ?>
@@ -119,7 +86,7 @@
 	</span><br>
 	<input type="text" name="postanski_broj"/><br>
 
-	
+
 	<label>Mjesto</label><span>* 
 	<select name="gradovi">
 			<option value="1" selected="selected">Odaberi</option>
@@ -132,12 +99,10 @@
 			<?php echo $errors['mjesto'];?>
 		<?php endif; ?>
 	</span> <br>
-
 	
 	<label>Država</label><span>* 
 	<select name="drzave">
 		<option value="1" selected="selected">Odaberi</option>
-		<?php var_dump($drzave); ?>
 		<?php foreach($drzave as $d){ ?>
      		<option value="<?php echo $d['id']; ?>"><?php echo $d['naziv_drzave']; ?></option> 
    		<?php } ?>	
@@ -159,7 +124,31 @@
 			<?php echo $errors['kategorije_posla'];?>
 		<?php endif; ?>
 	</span><br>
-
+	
+	<label>Stručna sprema</label><span>* 
+	<select name="naziv_strucne_spreme">
+		<option value="1" selected="selected">Odaberi</option>
+		<?php foreach($strucna_sprema as $sprema){ ?>
+     		<option value="<?php echo $sprema['id']; ?>"><?php echo $sprema['naziv_kategorije']; ?></option> 
+   		<?php } ?>	
+   	</select>		
+		<?php if(!empty($errors['naziv_strucne_spreme'])): ?>
+			<?php echo $errors['naziv_strucne_spreme'];?>
+		<?php endif; ?>
+	</span><br>
+	
+	
+	<label>Županije</label><span>* 
+	<select name="zupanije">
+		<option value="1" selected="selected">Odaberi</option>
+		<?php foreach($zupanije as $z){ ?>
+     		<option value="<?php echo $z['id']; ?>"><?php echo $z['naziv_zupanije']; ?></option> 
+   		<?php } ?>	
+   	</select>		
+		<?php if(!empty($errors['naziv_zupanije'])): ?>
+			<?php echo $errors['naziv_zupanije'];?>
+		<?php endif; ?>
+	</span><br>
 
 	
 	<label>Kontakt telefon</label><span>* 
@@ -168,14 +157,45 @@
 		<?php endif; ?>
 	</span><br>
 	<input type="text" name="kontakt_broj"/><br><br>
-
 	
-	<input type="submit" name="submit" class="btn btn-default"/>
+	
+	<label>Radno iskustvo</label><br><br>
+	
+	<label>Naziv poduzeća</label><br>
+	<input type="text" name="naziv_poduzeca"/><br>
+	
+	<label>Titula</label><br>
+	<input type="text" name="titula"/><br>
+	
+	<label>Datum početka rada</label><br>
+	<input type="date" name="pocetak_rada"/><br>
+	
+	<label>Datum završetka rada</label><br>
+	<input type="date" name="zavrsetak_rada"/><br><br>
+	
+	
+	<label>Obrazovanje</label><br><br>
+	
+	<label>Vrsta obrazovanja (tečaj/srednja škola/fakultet...)</label><br>
+	<input type="text" name="vrsta_obrazovanja"/><br>
+	
+	<label>Naziv obrazovne ustanove</label><br>
+	<input type="text" name="naziv_obrazovne_ustanove"/><br>
+	
+	<label>Datum početka obrazovanja</label><br>
+	<input type="date" name="pocetak_skolovanja"/><br>
+	
+	<label>Datum završetka obrazovanja</label><br>
+	<input type="date" name="zavrsetak_skolovanja"/><br><br>
+	
+	
+	<input type="submit" name="submit"/>
 	
 	
 	
 	</form>
-	
+
+
 
 </body>
 
