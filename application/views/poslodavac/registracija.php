@@ -8,64 +8,61 @@
 <link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap-theme.css"/>
 <link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/signin.css"/>
+
 
 <title>Untitled 1</title>
 </head>
 
 <body>
 	
-	<form method="post" action="/poslodavac/registracija">
 	
-	<div class="form-group">
-	<label>E-mail</label> 
-	<span>* 
+	<div class="container">
+	
+	<form method="post" action="/poslodavac/registracija" class="form-signin">
+	
+	<h2 class="form-signin-heading">Registracija posloprimca</h2>
+	
+	
+	<label>E-mail*</label> 
 		<?php if(!empty($errors['e_mail'])): ?>
 			<?php echo $errors['e_mail'];?>
 		<?php endif; ?>
-	</span><br>
-	<input type="text" name="e_mail" class="form-control"/><br>
-	</div>
+	<br>
+	<input type="text" name="e_mail" class="form-control"/>
 	
-	<div class="form-group">
-	<label>Lozinka</label> 
-	<span>* 
+	<label>Lozinka*</label> 
 		<?php if(!empty($errors['lozinka'])): ?>
 			<?php echo $errors['lozinka'];?>
 		<?php endif; ?>
-	</span><br>
-	<input type="password" name="lozinka" class="form-control"/><br>
-	</div>
+	<br>
+	<input type="password" name="lozinka" class="form-control"/>
 	
 	
-	<div class="form-group">
-	<label>Ponovite lozinku</label> 
-	<span>* 
+	<label>Ponovite lozinku*</label> 
 		<?php if(!empty($errors['ponovite_lozinku'])): ?>
 			<?php echo $errors['ponovite_lozinku'];?>
 		<?php endif; ?>
-	</span><br>
-	<input type="password" name="ponovite_lozinku" class="form-control"/><br>
-	</div>
+	<br>
+	<input type="password" name="ponovite_lozinku" class="form-control"/>		
 	
-	<label>Ime kontakt osobe</label>
-	<span>* 
+	<label>Ime kontakt osobe*</label>
 		<?php if(!empty($errors['ime_kontakt_osobe'])): ?>
 			<?php echo $errors['ime_kontakt_osobe'];?>
 		<?php endif; ?>
-	</span><br>
-	<input type="text" name="ime_kontakt_osobe"/><br>
+	<br>
+	<input type="text" name="ime_kontakt_osobe" class="form-control"/>
 	
 	
-	<label>Prezime kontakt osobe</label>
-	<span>* 
+	<label>Prezime kontakt osobe*</label>
 		<?php if(!empty($errors['prezime_kontakt_osobe'])): ?>
 			<?php echo $errors['prezime_kontakt_osobe'];?>
 		<?php endif; ?>
-	</span><br>
-	<input type="text" name="prezime_kontakt_osobe"/><br>
+	<br>
+	<input type="text" name="prezime_kontakt_osobe" class="form-control"/>
 
 
-	<label>Vrsta pravnog subjekta</label><span>*
+	<label>Vrsta pravnog subjekta*</label>	
 	<select name="vrsta_pravnog_subjekta">
 		<option value="1" selected="selected">Odaberi</option>
 		<?php foreach($vrsta_pravnog_subjekta as $vps){ ?>
@@ -76,65 +73,63 @@
    		<?php if(!empty($errors['vrsta_pravnog_subjekta'])): ?>
 			<?php echo $errors['vrsta_pravnog_subjekta'];?>
 		<?php endif; ?><br>
-		</span>
 	
-	
-	<label>Djelatnost</label><span>* 
+
+	<label>Djelatnost*</label>
 		<?php if(!empty($errors['djelatnost'])): ?>
 			<?php echo $errors['djelatnost'];?>
 		<?php endif; ?>
-	</span> <br>
-	<input type="text" name="djelatnost"/><br>
+	<br>
+	<input type="text" name="djelatnost" class="form-control"/>
 
 	
-	<label>Naziv tvrtke</label><span>*
+	<label>Naziv tvrtke*</label>
 		<?php if(!empty($errors['naziv_tvrtke'])): ?>
 			<?php echo $errors['naziv_tvrtke'];?>
 		<?php endif; ?>
-	
- 	</span><br>
-	<input type="text" name="naziv_tvrtke"/><br>
+	<br>
+	<input type="text" name="naziv_tvrtke" class="form-control"/>
 
 	
-	<label>OIB tvtke</label><span>* 
+	<label>OIB tvtke*</label>
 		<?php if(!empty($errors['oib_tvrtke'])): ?>
 			<?php echo $errors['oib_tvrtke'];?>
 		<?php endif; ?>
-	</span><br>
-	<input type="text" name="oib_tvrtke"/><br>
+	<br>
+	<input type="text" name="oib_tvrtke" class="form-control"/>
 
 	
-	<label>Adresa</label><span>* 
+	<label>Adresa*</label>
 		<?php if(!empty($errors['adresa'])): ?>
 			<?php echo $errors['adresa'];?>
 		<?php endif; ?>
-	</span><br>
-	<input type="text" name="adresa"/><br>
+	<br>
+	<input type="text" name="adresa" class="form-control"/>
 
 	
-	<label>Poštanski broj</label><span>* 
+	<label>Poštanski broj*</label>
 		<?php if(!empty($errors['postanski_broj'])): ?>
 			<?php echo $errors['postanski_broj'];?>
 		<?php endif; ?>
-	</span><br>
-	<input type="text" name="postanski_broj"/><br>
+
+	<input type="text" name="postanski_broj" class="form-control" style="width:150px"/>
 
 	
-	<label>Mjesto</label><span>* 
+	<label>Mjesto*</label>	
 	<select name="gradovi">
 			<option value="1" selected="selected">Odaberi</option>
 		<?php foreach($gradovi as $grad){ ?>
      		<option value="<?php echo $grad['id']; ?>"><?php echo $grad['naziv']; ?></option> 
    		<?php } ?>	
    	</select>		
-
 		<?php if(!empty($errors['mjesto'])): ?>
 			<?php echo $errors['mjesto'];?>
 		<?php endif; ?>
-	</span> <br>
+	 <br>
+
 
 	
-	<label>Država</label><span>* 
+	<label>Država*</label> 
 	<select name="drzave">
 		<option value="1" selected="selected">Odaberi</option>
 		<?php var_dump($drzave); ?>
@@ -145,10 +140,11 @@
 		<?php if(!empty($errors['drzave'])): ?>
 			<?php echo $errors['drzave'];?>
 		<?php endif; ?>
-	</span><br>
+	<br>
+
 	
 	
-	<label>Kategorija</label><span>* 
+	<label>Kategorija*</label>
 	<select name="kategorije_poslova">
 		<option value="1" selected="selected">Odaberi</option>
 		<?php foreach($kategorije_poslova as $kategorija){ ?>
@@ -158,25 +154,23 @@
 		<?php if(!empty($errors['kategorije_posla'])): ?>
 			<?php echo $errors['kategorije_posla'];?>
 		<?php endif; ?>
-	</span><br>
+	<br>
 
 
-	
-	<label>Kontakt telefon</label><span>* 
+	<label>Kontakt telefon*</label>
 		<?php if(!empty($errors['kontakt_broj'])): ?>
 			<?php echo $errors['kontakt_broj'];?>
 		<?php endif; ?>
-	</span><br>
-	<input type="text" name="kontakt_broj"/><br><br>
+	<br>
+	<input type="text" name="kontakt_broj" class="form-control"/><br>
 
 	
-	<input type="submit" name="submit" class="btn btn-default"/>
+	<input type="submit" name="submit" class="btn btn-lg btn-primary btn-block"/>
 	
 	
 	
 	</form>
-	
-
+	</div>
 </body>
 
 </html>

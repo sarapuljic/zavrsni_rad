@@ -13,15 +13,14 @@ class PoslodavacController extends Core\Controller{
 		if(empty($_POST['e_mail'])){
 			$errors['e_mail'] = "Unesi e-mail!";
 		}else{
+		//	$korisnikPostoji = $this->_model->korisnikPostoji();
+		//	if ($korisnikPostoji) {
 			
-			$korisnikPostoji = $this->_model->korisnikPostoji();
-			if ($korisnikPostoji) {
-			} else {
-				$podaciKorisnik[] = $_POST['e_mail'];
-			}
+		//		$row = mysql_fetch_array($korisnik);
 			
-			
-		
+		//	} else {
+		//		$podaciKorisnik[] = $_POST['e_mail'];
+		//	}
 		}
 		
 		if(empty($_POST['lozinka'])){

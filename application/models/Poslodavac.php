@@ -23,7 +23,15 @@ class Poslodavac extends Core\Model{
 		$this->insert('poslodavac', $this->_kolonePoslodavac, $podaciPoslodavac);
 		//var_dump($podaciPoslodavac);
 		//die();
+		
 	}
+	
+	//public function korisnikPostoji(){
+		
+	//	$this->_table="korisnik";
+	//	$korisnik = $this->selectAll();
+		
+	//}
 		
 	public function logirajKorisnika($podaciKorisnik){
 		
