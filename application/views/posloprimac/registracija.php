@@ -129,7 +129,7 @@
 	<select name="naziv_strucne_spreme">
 		<option value="1" selected="selected">Odaberi</option>
 		<?php foreach($strucna_sprema as $sprema){ ?>
-     		<option value="<?php echo $sprema['id']; ?>"><?php echo $sprema['naziv_kategorije']; ?></option> 
+     		<option value="<?php echo $sprema['id']; ?>"><?php echo $sprema['naziv_strucne_spreme']; ?></option> 
    		<?php } ?>	
    	</select>		
 		<?php if(!empty($errors['naziv_strucne_spreme'])): ?>

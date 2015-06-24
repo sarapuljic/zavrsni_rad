@@ -21,7 +21,7 @@
 	
 	<form method="post" action="/poslodavac/registracija" class="form-signin">
 	
-	<h2 class="form-signin-heading">Registracija posloprimca</h2>
+	<h2 class="form-signin-heading">Registracija poslodavca</h2>
 	
 	
 	<label>E-mail*</label> 
@@ -63,16 +63,16 @@
 
 
 	<label>Vrsta pravnog subjekta*</label>	
+	   	<?php if(!empty($errors['vrsta_pravnog_subjekta'])): ?>
+			<?php echo $errors['vrsta_pravnog_subjekta'];?>
+		<?php endif; ?><br>
 	<select name="vrsta_pravnog_subjekta">
 		<option value="1" selected="selected">Odaberi</option>
 		<?php foreach($vrsta_pravnog_subjekta as $vps){ ?>
      		<option value="<?php echo $vps['id']; ?>"><?php echo $vps['naziv_vps']; ?></option> 
    		<?php } ?>	
-   	</select>		
-   	
-   		<?php if(!empty($errors['vrsta_pravnog_subjekta'])): ?>
-			<?php echo $errors['vrsta_pravnog_subjekta'];?>
-		<?php endif; ?><br>
+   	</select>
+   	<br>
 	
 
 	<label>Djelatnost*</label>
@@ -96,7 +96,7 @@
 			<?php echo $errors['oib_tvrtke'];?>
 		<?php endif; ?>
 	<br>
-	<input type="text" name="oib_tvrtke" class="form-control"/>
+	<input type="text" name="oib_tvrtke" class="form-control" maxlength="11"/>
 
 	
 	<label>Adresa*</label>
@@ -112,48 +112,47 @@
 			<?php echo $errors['postanski_broj'];?>
 		<?php endif; ?>
 
-	<input type="text" name="postanski_broj" class="form-control" style="width:150px"/>
+	<input type="text" name="postanski_broj" class="form-control" style="width:150px" maxlength="5"/>
 
 	
 	<label>Mjesto*</label>	
+		<?php if(!empty($errors['mjesto'])): ?>
+			<?php echo $errors['mjesto'];?>
+		<?php endif; ?>
 	<select name="gradovi">
 			<option value="1" selected="selected">Odaberi</option>
 		<?php foreach($gradovi as $grad){ ?>
      		<option value="<?php echo $grad['id']; ?>"><?php echo $grad['naziv']; ?></option> 
    		<?php } ?>	
    	</select>		
-		<?php if(!empty($errors['mjesto'])): ?>
-			<?php echo $errors['mjesto'];?>
-		<?php endif; ?>
-	 <br>
+	<br>
 
 
 	
 	<label>Država*</label> 
+		<?php if(!empty($errors['drzave'])): ?>
+			<?php echo $errors['drzave'];?>
+		<?php endif; ?>
 	<select name="drzave">
 		<option value="1" selected="selected">Odaberi</option>
-		<?php var_dump($drzave); ?>
 		<?php foreach($drzave as $d){ ?>
      		<option value="<?php echo $d['id']; ?>"><?php echo $d['naziv_drzave']; ?></option> 
    		<?php } ?>	
    	</select>
-		<?php if(!empty($errors['drzave'])): ?>
-			<?php echo $errors['drzave'];?>
-		<?php endif; ?>
 	<br>
 
 	
 	
 	<label>Kategorija*</label>
+		<?php if(!empty($errors['kategorije_posla'])): ?>
+			<?php echo $errors['kategorije_posla'];?>
+		<?php endif; ?>
 	<select name="kategorije_poslova">
 		<option value="1" selected="selected">Odaberi</option>
 		<?php foreach($kategorije_poslova as $kategorija){ ?>
      		<option value="<?php echo $kategorija['id']; ?>"><?php echo $kategorija['naziv_kategorije']; ?></option> 
    		<?php } ?>	
    	</select>		
-		<?php if(!empty($errors['kategorije_posla'])): ?>
-			<?php echo $errors['kategorije_posla'];?>
-		<?php endif; ?>
 	<br>
 
 

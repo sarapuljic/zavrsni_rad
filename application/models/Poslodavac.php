@@ -26,13 +26,14 @@ class Poslodavac extends Core\Model{
 		
 	}
 	
-	//public function korisnikPostoji(){
+	public function korisnikPostoji(){
 		
-	//	$this->_table="korisnik";
-	//	$korisnik = $this->selectAll();
+		$this->_table="korisnik";
+		$korisnik = $this->selectAll();
 		
-	//}
-		
+			
+		}	
+			
 	public function logirajKorisnika($podaciKorisnik){
 		
 		

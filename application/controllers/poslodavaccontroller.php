@@ -13,14 +13,14 @@ class PoslodavacController extends Core\Controller{
 		if(empty($_POST['e_mail'])){
 			$errors['e_mail'] = "Unesi e-mail!";
 		}else{
-		//	$korisnikPostoji = $this->_model->korisnikPostoji();
-		//	if ($korisnikPostoji) {
+			$korisnikPostoji = $this->_model->korisnikPostoji();
+			if ($korisnikPostoji) {
 			
-		//		$row = mysql_fetch_array($korisnik);
+				$row = mysql_num_rows($korisnik) > 0;
 			
-		//	} else {
-		//		$podaciKorisnik[] = $_POST['e_mail'];
-		//	}
+			} else {
+				$podaciKorisnik[] = $_POST['e_mail'];
+			}
 		}
 		
 		if(empty($_POST['lozinka'])){
@@ -42,7 +42,7 @@ class PoslodavacController extends Core\Controller{
 			$errors['ime_kontakt_osobe'] = "Unesi ime kontakt osobe!";
 		}else{	
 			if(!preg_match("/^[a-zA-Z ]*$/", $_POST['ime_kontakt_osobe'])){
- 			$errors['ime_kontakt_osobe'] = "Only letters and white space allowed"; 
+ 			$errors['ime_kontakt_osobe'] = "Dozvoljen unos slova i razmaka!"; 
 			}
 			$podaciPoslodavac[] = $_POST['ime_kontakt_osobe'];
 			
@@ -52,7 +52,7 @@ class PoslodavacController extends Core\Controller{
 			$errors['prezime_kontakt_osobe'] = "Unesi prezime kontakt osobe!";
 		}else{
 			if(!preg_match("/^[a-zA-Z ]*$/", $_POST['prezime_kontakt_osobe'])){
- 			$errors['prezime_kontakt_osobe'] = "Only letters and white space allowed"; 
+ 			$errors['prezime_kontakt_osobe'] = "Dozvoljen unos slova i razmaka!"; 
 			}
 			$podaciPoslodavac[] = $_POST['prezime_kontakt_osobe'];
 		}
@@ -67,16 +67,20 @@ class PoslodavacController extends Core\Controller{
 			$errors['naziv_tvrtke']="Unesi naziv tvrtke!";
 		}else{
 			if (!preg_match("/^[a-zA-Z ]*$/", $_POST['naziv_tvrtke'])){
- 			$errors['naziv_tvrtke'] = "Only letters and white space allowed"; 
+ 			$errors['naziv_tvrtke'] = "Dozvoljen unos slova i razmaka!"; 
 			}
 			$podaciPoslodavac[] = $_POST['naziv_tvrtke'];
 		}
 		
-				if(empty($_POST['oib_tvrtke'])){
+		if(empty($_POST['oib_tvrtke'])){
 			$errors['oib_tvrtke'] = "Unesi OIB tvrtke!";
 		}else{
+			//if(strlen($_POST['oib_tvrtke'] <= strlen($_POST['oib_tvrtke']))){
+			//	$errors['oib_tvrtke'] = "OIB mora sadržavati 11 znakova!";
+			//}
+			
 			if(!preg_match("/^[0-9]+$/", $_POST['oib_tvrtke'])){
-   			$errors['oib_tvrtke'] = "This string contains only digits";
+   			$errors['oib_tvrtke'] = "Dozvoljen unos brojeva!";
 			} 
 			$podaciPoslodavac[] = $_POST['oib_tvrtke'];		
 		}
@@ -85,17 +89,21 @@ class PoslodavacController extends Core\Controller{
 		if(empty($_POST['adresa'])){
 			$errors['adresa'] = "Unesi adresu tvrtke!";
 		}else{
-			if (!preg_match("/^[a-zA-Z ]*$/", $_POST['adresa'])){
- 			$errors['adresa'] = "Only letters and white space allowed"; 
+			if(!preg_match("/^[a-zA-Z ]*$/", $_POST['adresa'])){
+ 			$errors['adresa'] = "Dozvoljen unos slova i razmaka!"; 
 			}
 			$podaciPoslodavac[] = $_POST['adresa'];
 		}
 		
-				if(empty($_POST['postanski_broj'])){
+		if(empty($_POST['postanski_broj'])){
 			$errors['postanski_broj'] = "Unesi poštanski broj!";
 		}else{
+			if (strlen($_POST['postanski_broj'] <= 5)){
+				$errors['postanski_broj'] = "Poštanski broj sadrži 5 znakova!";
+			}
+
 			if(!preg_match("/^[0-9]+$/", $_POST['postanski_broj'])){
-   			$errors['postanski_broj'] = "This string contains only digits";
+   			$errors['postanski_broj'] = "Dozvoljen unos brojeva!";
 			} 
 			$podaciPoslodavac[] = $_POST['postanski_broj'];
 		}
@@ -104,7 +112,7 @@ class PoslodavacController extends Core\Controller{
 			$errors['kontakt_broj'] = "Unesi kontakt broj tvrtke!";
 		}else{
 			if(!preg_match("/^[0-9]+$/", $_POST['kontakt_broj'])){
-   			$errors['kontakt_broj'] = "This string contains only digits";
+   			$errors['kontakt_broj'] = "Dozvoljen unos brojeva!";
 			} 
 			$podaciPoslodavac[] = $_POST['kontakt_broj'];
 		}

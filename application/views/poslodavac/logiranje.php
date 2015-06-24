@@ -3,43 +3,46 @@
 
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<link rel="stylesheet" type="text/css" href="../login/bootstrap.css"/>
-<link rel="stylesheet" type="text/css" href="../login/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="../login/bootstrap-theme.css"/>
-<link rel="stylesheet" type="text/css" href="../login/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/signin.css"/>
+
 
 <title>Untitled 1</title>
 </head>
 
 <body>
+
+<div class="container">
 	
-	<form method="post" action="/poslodavac/logiranje">
+	<form method="post" action="/poslodavac/logiranje" class="form-signin">
 	
+	<h2 class="form-signin-heading">Prijava poslodavca</h2>
 	
-	<label>E-mail</label> 
-	<span>* 
+	<label>E-mail*</label> 
 		<?php if(!empty($errors['e_mail'])): ?>
 			<?php echo $errors['e_mail'];?>
 		<?php endif; ?>
-	</span><br>
-	<input type="text" name="e_mail"/><br>
+	<br>
+	<input type="text" name="e_mail" class="form-control"/><br>
 	
 	
-	<label>Lozinka</label> 
-	<span>* 
+	<label>Lozinka*</label> 
 		<?php if(!empty($errors['lozinka'])): ?>
 			<?php echo $errors['lozinka'];?>
 		<?php endif; ?>
-	</span><br>
-	<input type="password" name="lozinka"/><br>
+	<br>
+	<input type="password" name="lozinka" class="form-control"/><br>
 	
 	
-	<input type="submit" name="submit"/>
-	
+	<input type="submit" name="submit" class="btn btn-lg btn-primary btn-block"/>
 	
 	
 	</form>
 	
+</div>
 
 </body>
 
