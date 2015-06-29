@@ -7,3 +7,4 @@ class KategorijePoslovaController extends Core\Controller{
 		$this->set("kategorije_poslova", $kategorijePosla); 
 	}
 
+}
