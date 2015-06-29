@@ -162,11 +162,70 @@ class PosloprimacController extends Core\Controller{
 			$podaciPosloprimac[] = $_POST['obrazovanje'];
 		}
 
+		if(empty($_POST['kontakt_broj'])){
+			$errors['kontakt_broj'] = "Unesi kontakt broj!";
+		}else{
+			$podaciPosloprimac[] = $_POST['kontakt_broj'];
+		}
 		
+		//radno iskustvo
+				
+		if(empty($_POST['naziv_poduzeca'])){
+			$errors['naziv_poduzeca'] = "Unesi naziv poduzeća!";
+		}else{
+			$podaciPosloprimac[] = $_POST['naziv_poduzeca'];
+		}
+		
+		if(empty($_POST['titula'])){
+			$errors['titula'] = "Unesi titulu!";
+		}else{
+			$podaciPosloprimac[] = $_POST['titula'];
+		}
+
+		if(empty($_POST['pocetak_rada'])){
+			$errors['pocetak_rada'] = "Unesi početak rada!";
+		}else{
+			$podaciPosloprimac[] = $_POST['pocetak_rada'];
+		}
+		
+		if(empty($_POST['zavrsetak_rada'])){
+			$errors['zavrsetak_rada'] = "Unesi završetak rada!";
+		}else{
+			$podaciPosloprimac[] = $_POST['zavrsetak_rada'];
+		}
+
+		//obrazovanje
+		
+		if(empty($_POST['vrsta_obrazovanja'])){
+			$errors['vrsta_obrazovanja'] = "Unesi  vrstu obrazovanje!";
+		}else{
+			$podaciPosloprimac[] = $_POST['vrsta_obrazovanja'];
+		}
+
+		if(empty($_POST['naziv_obrazovne_ustanove'])){
+			$errors['naziv_obrazovne_ustanove'] = "Unesi  naziv obrazovne ustanove!";
+		}else{
+			$podaciPosloprimac[] = $_POST['naziv_obrazovne_ustanove'];
+		}
+
+		if(empty($_POST['pocetak_skolovanja'])){
+			$errors['pocetak_skolovanja'] = "Unesi početak školovanje!";
+		}else{
+			$podaciPosloprimac[] = $_POST['pocetak_skolovanja'];
+		}
+		
+		if(empty($_POST['zavrsetak_skolovanja'])){
+			$errors['zavrsetak_skolovanja'] = "Unesi završetak školovanje!";
+		}else{
+			$podaciPosloprimac[] = $_POST['zavrsetak_skolovanja'];
+		}
+
+		
+	
 		if(empty($errors)){
 			//var_dump('nema grešaka');
 			
-			$this->_model->registrirajKorisnika($podaciKorisnik, $podaciPosloprimac);
+			$this->_model->registSrirajKorisnika($podaciKorisnik, $podaciPosloprimac);
 		} else{
 			$this->set('errors', $errors);		
 			
@@ -221,7 +280,14 @@ class PosloprimacController extends Core\Controller{
 		$zupanija = $zupanija ->dohvatiZupaniju();
 		return $zupanija ;
 		}
+		
+		public function logiranje(){
+		
+		
+		
+		}
 
+		
 
 
 

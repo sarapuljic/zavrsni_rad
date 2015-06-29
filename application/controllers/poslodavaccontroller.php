@@ -13,15 +13,9 @@ class PoslodavacController extends Core\Controller{
 		if(empty($_POST['e_mail'])){
 			$errors['e_mail'] = "Unesi e-mail!";
 		}else{
-			$korisnikPostoji = $this->_model->korisnikPostoji();
-			if ($korisnikPostoji) {
-			
-				$row = mysql_num_rows($korisnik) > 0;
-			
-			} else {
-				$podaciKorisnik[] = $_POST['e_mail'];
-			}
+			$podaciKorisnik[] = $_POST['e_mail'];
 		}
+		
 		
 		if(empty($_POST['lozinka'])){
 			$errors['lozinka'] = "Unesi lozinku!";		
@@ -98,9 +92,9 @@ class PoslodavacController extends Core\Controller{
 		if(empty($_POST['postanski_broj'])){
 			$errors['postanski_broj'] = "Unesi poštanski broj!";
 		}else{
-			if (strlen($_POST['postanski_broj'] <= 5)){
-				$errors['postanski_broj'] = "Poštanski broj sadrži 5 znakova!";
-			}
+			//if (strlen($_POST['postanski_broj'])){
+			//	$errors['postanski_broj'] = "Poštanski broj sadrži 5 znakova!";
+			//}
 
 			if(!preg_match("/^[0-9]+$/", $_POST['postanski_broj'])){
    			$errors['postanski_broj'] = "Dozvoljen unos brojeva!";
@@ -108,7 +102,7 @@ class PoslodavacController extends Core\Controller{
 			$podaciPoslodavac[] = $_POST['postanski_broj'];
 		}
 		
-				if(empty($_POST['kontakt_broj'])){
+		if(empty($_POST['kontakt_broj'])){
 			$errors['kontakt_broj'] = "Unesi kontakt broj tvrtke!";
 		}else{
 			if(!preg_match("/^[0-9]+$/", $_POST['kontakt_broj'])){
@@ -129,7 +123,7 @@ class PoslodavacController extends Core\Controller{
 
 		}
 		
-				if(empty($_POST['drzave'])){
+		if(empty($_POST['drzave'])){
 			$errors['drzave'] = "Unesi državu!";
 		}else{
 			$podaciPoslodavac[] = $_POST['drzave'];
@@ -146,15 +140,12 @@ class PoslodavacController extends Core\Controller{
 			$podaciPoslodavac[] = $_POST['kategorije_poslova'];
 		}
 
-
-
 		
 		if(empty($_POST['djelatnost'])){
 			$errors['djelatnost'] = "Unesi djelatnost tvrtke!";
 		}else{
 			$podaciPoslodavac[] = $_POST['djelatnost'];
-		}
-		
+		}		
 		
 		if(empty($errors)){
 			//var_dump('nema grešaka');
@@ -165,6 +156,7 @@ class PoslodavacController extends Core\Controller{
 			
 			//header("Location: registracija");
 		}
+		
 	}
 			$subjekti = $this->dohvatiVps();
 			$this->set("vrsta_pravnog_subjekta", $subjekti); 
@@ -200,9 +192,9 @@ class PoslodavacController extends Core\Controller{
 	}
 	
 	public function dohvatiDrzavu(){
-	$drzave = new Drzave();
-	$drzave = $drzave->dohvatiDrzavu();
-	return $drzave; 
+		$drzave = new Drzave();
+		$drzave = $drzave->dohvatiDrzavu();
+		return $drzave; 
 	}
 
 	
