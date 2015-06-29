@@ -31,6 +31,14 @@ class Poslodavac extends Core\Model{
 		$this->_table="korisnik";
 		$korisnik = $this->selectAll();
 		
+ 		if(mysql_num_rows($sql)>=1){
+   			echo"name already exists";
+   		}else
+    		{
+    		
+   			//insert query goes here
+    		}
+		
 			
 		}	
 			

@@ -1,0 +1,45 @@
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Environment #
+###############
+/vagrant*
+/.vagrant*
+_vti_cnf*
+
+# Logs and databases #
+######################
+*.log
+*.sqlite
+*.tmp
+*.bak
+
+# OS generated files #
+######################
+.DS_Store?
+Icon?
+*.orig
+.~
+*~
+.DS_Store*
+._*
+esproj
+.DS_Store
+._*
+./._*
+/test.php
+includes/src/
+.idea/
+*.sql
+
+# Project #
+###########
+/public/img/*

@@ -1,4 +1,3 @@
-	
 	<div class="container">
 	
 	<form method="post" action="/poslodavac/registracija" class="form-signin">
@@ -102,7 +101,7 @@
 			<?php echo $errors['mjesto'];?>
 		<?php endif; ?>
 	<select name="gradovi">
-			<option value="1" selected="selected">Odaberi</option>
+		<option value="1" selected="selected">Odaberi</option>
 		<?php foreach($gradovi as $grad){ ?>
      		<option value="<?php echo $grad['id']; ?>"><?php echo $grad['naziv']; ?></option> 
    		<?php } ?>	
@@ -145,7 +144,6 @@
 	<br>
 	<input type="text" name="kontakt_broj" class="form-control"/><br>
 
-	
 	<input type="submit" name="submit" class="btn btn-lg btn-primary btn-block"/>
 	
 	
