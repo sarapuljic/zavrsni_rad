@@ -16,7 +16,7 @@ class PoslodavacController extends Core\Controller{
 			$podaciKorisnik[] = $_POST['e_mail'];
 		}
 		
-		
+               
 		if(empty($_POST['lozinka'])){
 			$errors['lozinka'] = "Unesi lozinku!";		
 		}else{

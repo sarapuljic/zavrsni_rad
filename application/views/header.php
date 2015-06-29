@@ -3,9 +3,9 @@
 <html>
 	<head>
 		<title><?php echo $title?></title>
-		<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap.css"/>
-		<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/bootstrap-theme.css"/>
-		<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/css/signin.css"/>
+		<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/bootstrap-theme.css"/>
+		<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/signin.css"/>
 	</head>
 	<body>
 	
