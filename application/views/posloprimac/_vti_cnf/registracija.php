@@ -1,21 +1,17 @@
 vti_encoding:SR|utf8-nl
 vti_author:SR|Sara-PC\\Sara
 vti_modifiedby:SR|Sara-PC\\Sara
-vti_timelastmodified:TR|29 Jun 2015 07:31:08 -0000
+vti_timelastmodified:TR|29 Jun 2015 08:15:52 -0000
 vti_timecreated:TR|23 Jun 2015 12:46:02 -0000
-vti_title:SR|Untitled 1
 vti_extenderversion:SR|12.0.0.0
 vti_backlinkinfo:VX|
-vti_nexttolasttimemodified:TW|29 Jun 2015 07:30:30 -0000
-vti_cacheddtm:TX|29 Jun 2015 07:31:08 -0000
-vti_filesize:IR|6398
-vti_cachedtitle:SR|Untitled 1
-vti_cachedbodystyle:SR|<body>
-vti_cachedlinkinfo:VX|Q|/public/css/bootstrap/css/bootstrap.css Q|/public/css/bootstrap/css/bootstrap.min.css Q|/public/css/bootstrap/css/bootstrap-theme.css Q|/public/css/bootstrap/css/bootstrap-theme.min.css Q|/public/css/bootstrap/css/signin.css A|/posloprimac/registracija
-vti_cachedsvcrellinks:VX|NQUS|/public/css/bootstrap/css/bootstrap.css NQUS|/public/css/bootstrap/css/bootstrap.min.css NQUS|/public/css/bootstrap/css/bootstrap-theme.css NQUS|/public/css/bootstrap/css/bootstrap-theme.min.css NQUS|/public/css/bootstrap/css/signin.css NAUS|/posloprimac/registracija
+vti_nexttolasttimemodified:TW|29 Jun 2015 07:31:08 -0000
+vti_cacheddtm:TX|29 Jun 2015 08:15:52 -0000
+vti_filesize:IR|5615
+vti_cachedlinkinfo:VX|A|/posloprimac/registracija
+vti_cachedsvcrellinks:VX|NAUS|/posloprimac/registracija
 vti_cachedneedsrewrite:BR|false
 vti_cachedhasbots:BR|false
 vti_cachedhastheme:BR|false
 vti_cachedhasborder:BR|false
-vti_metatags:VR|HTTP-EQUIV=Content-Type text/html;\\ charset=utf-8
 vti_charset:SR|utf-8
