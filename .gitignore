@@ -9,11 +9,14 @@
 *.tar
 *.zip
 
+
 # Environment #
 ###############
 /vagrant*
 /.vagrant*
 _vti_cnf*
+
+nbproject*
 
 # Logs and databases #
 ######################
