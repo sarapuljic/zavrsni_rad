@@ -4,8 +4,9 @@ class PoslodavacController extends Core\Controller{
 
     public function registracija(){
         
-        session_start();    
+        $this->set('errors', $_SESSION['errors']);
             //pročitat session i izbrisat 
+        
         $subjekti = $this->dohvatiVps();
             $this->set("vrsta_pravnog_subjekta", $subjekti); 
 	//var_dump($subjekti);
@@ -56,9 +57,11 @@ class PoslodavacController extends Core\Controller{
     //}
     
     public function spremanje(){
+        
+       
         $this->renderPage=false;
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
-	
+
             //$errors = $_SESSION['errors'];
             $errors = array();
             $_SESSION['errors'] = $errors;
@@ -68,7 +71,7 @@ class PoslodavacController extends Core\Controller{
             
 		
 		if(empty($_POST['e_mail'])){
-                    $_SESSION['errors']['ime_kontakt_osobe'] = "Unesi e-mail!";
+                    $_SESSION['errors']['e_mail'] = "Unesi e-mail!";
                     //$this->_model->korisnikPostoji();
                 }else{
                     $podaciKorisnik[] = $_POST['e_mail'];
@@ -197,16 +200,16 @@ class PoslodavacController extends Core\Controller{
                //var_dump($_SESSION['errors']);
                //die();
         
-        if(empty($errors)){	
+        if(empty($_SESSION['errors'])){	
             $this->_model->registrirajKorisnika($podaciKorisnik, $podaciPoslodavac);
+            echo 'Uspješno ste se registrirali!';
 	}else{
-            $this->set($_SESSION['errors'], $errors);    
+                
             //$this->set('errors', $errors); //preko session-a		
             $this->redirect("registracija");
         }
         
-       // var_dump($_SESSION);
-       // die();
+
         //session_destroy(); 
     }
 

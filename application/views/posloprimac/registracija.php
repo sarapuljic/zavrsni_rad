@@ -57,14 +57,14 @@
 
 	<label>Mjesto*</label>
             <select name="gradovi">
-		<option value="1" selected="selected" class="form-control">Odaberi</option>
+		<option value="" disabled selected class="form-control">Odaberi</option>
                     <?php foreach($gradovi as $grad){ ?>
                         <option value="<?php echo $grad['id']; ?>"><?php echo $grad['naziv']; ?></option> 
                     <?php } ?>	
             </select>	
         
-            <?php if(!empty($errors['mjesto'])): ?>
-		<?php echo $errors['mjesto'];?>
+            <?php if(!empty($errors['gradovi'])): ?>
+		<?php echo $errors['gradovi'];?>
             <?php endif; ?><br>
 	
 	<label>Država*</label>

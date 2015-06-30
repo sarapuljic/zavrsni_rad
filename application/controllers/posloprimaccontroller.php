@@ -3,8 +3,56 @@
 class PosloprimacController extends Core\Controller{
 
     public function registracija(){
+        
+        $gradovi = $this->dohvatiGrad();
+            $this->set("gradovi", $gradovi);
+			
+	$kategorije = $this->dohvatiKategorijuPosla();
+            $this->set("kategorije_poslova", $kategorije);
+			
+	$drzave = $this->dohvatiDrzavu();
+            $this->set("drzave", $drzave);
+			
+	$strucnaSprema = $this->dohvatiStrucnuSpremu();
+            $this->set("strucna_sprema", $strucnaSprema);
+
+	$zupanija = $this->dohvatiZupaniju();
+            $this->set("zupanije", $zupanija );			
+}
+
+    public function dohvatiGrad(){
+	$grad = new Gradovi();
+	$gradovi = $grad->dohvatiGrad();
+	return $gradovi;
+    }
 	
-	if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    public function dohvatiKategorijuPosla(){
+        $kategorijePosla = new Kategorije();
+        $kategorije = $kategorijePosla->dohvatiKategorijuPosla();
+	return $kategorije; 
+    }
+	
+    public function dohvatiDrzavu(){
+        $drzave = new Drzave();
+        $drzave = $drzave->dohvatiDrzavu();
+	return $drzave; 
+    }
+		
+    public function dohvatiStrucnuSpremu(){
+	$strucnaSprema = new StrucnaSprema();
+	$strucnaSprema = $strucnaSprema->dohvatiStrucnuSpremu();
+	return $strucnaSprema;
+    }
+		
+    public function dohvatiZupaniju(){
+	$zupanija = new Zupanije();
+	$zupanija = $zupanija ->dohvatiZupaniju();
+	return $zupanija ;
+    }
+    
+    public function spremanje(){
+        
+        if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	
             $errors = array();
             $podaciKorisnik = array();
@@ -209,60 +257,15 @@ class PosloprimacController extends Core\Controller{
 		}
                         var_dump($podaciPosloprimac);
                         die();
-                    if(empty($errors)){
-                        $this->_model->registrirajKorisnika($podaciKorisnik, $podaciPosloprimac);
-                    } else{
-			$this->set('errors', $errors);		
-			//header("Location: registracija");
-                    }
-	}
-	
-        $gradovi = $this->dohvatiGrad();
-            $this->set("gradovi", $gradovi);
-			
-	$kategorije = $this->dohvatiKategorijuPosla();
-            $this->set("kategorije_poslova", $kategorije);
-			
-	$drzave = $this->dohvatiDrzavu();
-            $this->set("drzave", $drzave);
-			
-	$strucnaSprema = $this->dohvatiStrucnuSpremu();
-            $this->set("strucna_sprema", $strucnaSprema);
-
-	$zupanija = $this->dohvatiZupaniju();
-            $this->set("zupanije", $zupanija );
-
-			
-}
-
-    public function dohvatiGrad(){
-	$grad = new Gradovi();
-	$gradovi = $grad->dohvatiGrad();
-	return $gradovi;
-    }
-	
-    public function dohvatiKategorijuPosla(){
-        $kategorijePosla = new Kategorije();
-        $kategorije = $kategorijePosla->dohvatiKategorijuPosla();
-	return $kategorije; 
-    }
-	
-    public function dohvatiDrzavu(){
-        $drzave = new Drzave();
-        $drzave = $drzave->dohvatiDrzavu();
-	return $drzave; 
-    }
-		
-    public function dohvatiStrucnuSpremu(){
-	$strucnaSprema = new StrucnaSprema();
-	$strucnaSprema = $strucnaSprema->dohvatiStrucnuSpremu();
-	return $strucnaSprema;
-    }
-		
-    public function dohvatiZupaniju(){
-	$zupanija = new Zupanije();
-	$zupanija = $zupanija ->dohvatiZupaniju();
-	return $zupanija ;
+            
+            if(empty($errors)){
+                $this->_model->registrirajKorisnika($podaciKorisnik, $podaciPosloprimac);
+            } else{
+                $this->set('errors', $errors);
+                $this->redirect("registracija");
+		//header("Location: registracija");
+            }
+        }   
     }
 		
     public function logiranje(){
