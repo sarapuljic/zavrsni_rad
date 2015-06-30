@@ -117,7 +117,7 @@ abstract class SQLQuery {
         $sql = 'SELECT * FROM ' .$this->_table;
 
         return $this->query($sql);
-    }
+        }
 
 /**
  * Returns number of rows affected with last query

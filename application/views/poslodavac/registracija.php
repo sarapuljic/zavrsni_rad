@@ -1,28 +1,28 @@
 	<div class="container">
 	
-	<form method="post" action="/poslodavac/registracija" class="form-signin">
+	<form method="post" action="/poslodavac/spremanje" class="form-signin">
 	
 	<h2 class="form-signin-heading">Registracija poslodavca</h2>
 	
 	
 	<label>E-mail*</label> 
-		<?php if(!empty($errors['e_mail'])): ?>
-			<?php echo $errors['e_mail'];?>
+		<?php if(!empty($_SESSION['errors']['e_mail'])): ?>
+			<?php echo $_SESSION['errors']['e_mail'];?>
 		<?php endif; ?>
 	<br>
 	<input type="text" name="e_mail" class="form-control"/>
 	
 	<label>Lozinka*</label> 
-		<?php if(!empty($errors['lozinka'])): ?>
-			<?php echo $errors['lozinka'];?>
+		<?php if(!empty($_SESSION['errors']['lozinka'])): ?>
+			<?php echo $_SESSION['errors']['lozinka'];?>
 		<?php endif; ?>
 	<br>
 	<input type="password" name="lozinka" class="form-control"/>
 	
 	
 	<label>Ponovite lozinku*</label> 
-		<?php if(!empty($errors['ponovite_lozinku'])): ?>
-			<?php echo $errors['ponovite_lozinku'];?>
+		<?php if(!empty($_SESSION['errors']['ponovite_lozinku'])): ?>
+			<?php echo $_SESSION['errors']['ponovite_lozinku'];?>
 		<?php endif; ?>
 	<br>
 	<input type="password" name="ponovite_lozinku" class="form-control"/>		

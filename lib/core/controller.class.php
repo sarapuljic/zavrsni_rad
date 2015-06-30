@@ -78,4 +78,9 @@ abstract class Controller
             $this->_template->render($this->renderHeader);
         }
     }
+    
+    function redirect($actionName)
+    {
+        header("Location: $actionName");
+    }
 }
