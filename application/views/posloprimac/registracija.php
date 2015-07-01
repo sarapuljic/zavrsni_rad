@@ -32,10 +32,15 @@
 		<?php echo $errors['prezime'];?>
             <?php endif; ?><br>
 	<input type="text" name="prezime" class="form-control"/><br>
-
+<!--
 	<label>Spol*</label>
+             <?php/* if(!empty($errors['spol'])): */?>
+		<?php/* echo $errors['spol'];*/?>
+            <?php/* endif; */?><br>
             <input type="radio" name="sex" value="male" class="optradio">Muško</input>
-            <input type="radio" name="sex" value="female" class="optradio">žensko</input><br>		
+            <input type="radio" name="sex" value="female" class="optradio">žensko</input><br>
+-->
+            
 	
 	<label>Datum rođenja*</label>
             <?php if(!empty($errors['datum_rodjenja'])): ?>
@@ -69,7 +74,7 @@
 	
 	<label>Država*</label>
             <select name="drzave">
-		<option value="1" selected="selected" class="form-control">Odaberi</option>
+		<option value="" disabled selected class="form-control">Odaberi</option>
                     <?php foreach($drzave as $d){ ?>
                         <option value="<?php echo $d['id']; ?>"><?php echo $d['naziv_drzave']; ?></option> 
                     <?php } ?>	
@@ -81,36 +86,36 @@
 	
 	<label>Kategorija*</label> 
             <select name="kategorije_poslova">
-		<option value="1" selected="selected" class="form-control">Odaberi</option>
+		<option value="" disabled selected class="form-control">Odaberi</option>
                     <?php foreach($kategorije_poslova as $kategorija){ ?>
                         <option value="<?php echo $kategorija['id']; ?>"><?php echo $kategorija['naziv_kategorije']; ?></option> 
                     <?php } ?>	
             </select>
         
-            <?php if(!empty($errors['kategorije_posla'])): ?>
-		<?php echo $errors['kategorije_posla'];?>
+            <?php if(!empty($errors['kategorije_poslova'])): ?>
+		<?php echo $errors['kategorije_poslova'];?>
             <?php endif; ?><br>
 	
 	<label>Stručna sprema*</label>
-            <select name="naziv_strucne_spreme">
-		<option value="1" selected="selected" class="form-control">Odaberi</option>
+            <select name="strucna_sprema">
+		<option value="" disabled selected class="form-control">Odaberi</option>
                     <?php foreach($strucna_sprema as $sprema){ ?>
                         <option value="<?php echo $sprema['id']; ?>"><?php echo $sprema['naziv_strucne_spreme']; ?></option> 
                     <?php } ?>	
             </select>		
-            <?php if(!empty($errors['naziv_strucne_spreme'])): ?>
-		<?php echo $errors['naziv_strucne_spreme'];?>
+            <?php if(!empty($errors['strucna_sprema'])): ?>
+		<?php echo $errors['strucna_sprema'];?>
             <?php endif; ?><br>
 	
 	<label>Županije*</label>
             <select name="zupanije">
-		<option value="1" selected="selected" class="form-control">Odaberi</option>
+		<option value="" disabled selected class="form-control">Odaberi</option>
                     <?php foreach($zupanije as $z){ ?>
                         <option value="<?php echo $z['id']; ?>"><?php echo $z['naziv_zupanije']; ?></option> 
                     <?php } ?>	
             </select>		
-            <?php if(!empty($errors['naziv_zupanije'])): ?>
-		<?php echo $errors['naziv_zupanije'];?>
+            <?php if(!empty($errors['zupanije'])): ?>
+		<?php echo $errors['zupanije'];?>
             <?php endif; ?><br>
 	
 	<label>Kontakt telefon*</label>
@@ -121,35 +126,60 @@
 	
 	<label>Radno iskustvo</label><br><br>
 	
-	<label>Naziv poduzeća*</label><br>
-            <input type="text" name="naziv_poduzeca" class="form-control"/><br>
+	<label>Naziv poduzeća*</label>
+            <?php if(!empty($errors['naziv_poduzeca'])): ?>
+		<?php echo $errors['naziv_poduzeca'];?>
+            <?php endif; ?>
+        <input type="text" name="naziv_poduzeca" class="form-control"/><br>
 	
-	<label>Titula*</label><br>
-            <input type="text" name="titula" class="form-control"/><br>
+	<label>Titula*</label>
+            <?php if(!empty($errors['titula'])): ?>
+		<?php echo $errors['titula'];?>
+            <?php endif; ?>
+        <input type="text" name="titula" class="form-control"/><br>
 	
-	<label>Datum početka rada*</label><br>
-            <input type="date" name="pocetak_rada" class="form-control"/><br>
+	<label>Datum početka rada*</label>
+            <?php if(!empty($errors['pocetak_rada'])): ?>
+		<?php echo $errors['pocetak_rada'];?>
+            <?php endif; ?>
+        <input type="date" name="pocetak_rada" class="form-control"/><br>
 	
-	<label>Datum završetka rada*</label><br>
-            <input type="date" name="zavrsetak_rada" class="form-control"/><br><br>
+	<label>Datum završetka rada*</label>
+            <?php if(!empty($errors['zavrsetak_rada'])): ?>
+		<?php echo $errors['zavrsetak_rada'];?>
+            <?php endif; ?>
+        <input type="date" name="zavrsetak_rada" class="form-control"/><br><br>
 	
 	<label>Obrazovanje</label><br><br>
 	
-	<label>Vrsta obrazovanja* (tečaj/srednja škola/fakultet...)</label><br>
-            <input type="text" name="vrsta_obrazovanja" class="form-control"/><br>
+	<label>Vrsta obrazovanja* (tečaj/srednja škola/fakultet...)</label>
+            <?php if(!empty($errors['vrsta_obrazovanja'])): ?>
+		<?php echo $errors['vrsta_obrazovanja'];?>
+            <?php endif; ?>
+        <input type="text" name="vrsta_obrazovanja" class="form-control"/><br>
 	
-	<label>Naziv obrazovne ustanove*</label><br>
-            <input type="text" name="naziv_obrazovne_ustanove" class="form-control"/><br>
+	<label>Naziv obrazovne ustanove*</label>
+            <?php if(!empty($errors['naziv_obrazovne_ustanove'])): ?>
+		<?php echo $errors['naziv_obrazovne_ustanove'];?>
+            <?php endif; ?>
+        <input type="text" name="naziv_obrazovne_ustanove" class="form-control"/><br>
 	
-	<label>Datum početka obrazovanja*</label><br>
-            <input type="date" name="pocetak_skolovanja" class="form-control"/><br>
+	<label>Datum početka obrazovanja*</label>
+            <?php if(!empty($errors['pocetak_skolovanja'])): ?>
+		<?php echo $errors['pocetak_skolovanja'];?>
+            <?php endif; ?>
+        <input type="date" name="pocetak_skolovanja" class="form-control"/><br>
 	
-	<label>Datum završetka obrazovanj*a</label><br>
-            <input type="date" name="zavrsetak_skolovanja" class="form-control"/><br><br>
+	<label>Datum završetka obrazovanja*</label>
+            <?php if(!empty($errors['zavrsetak_skolovanja'])): ?>
+		<?php echo $errors['zavrsetak_skolovanja'];?>
+            <?php endif; ?>
+        <input type="date" name="zavrsetak_skolovanja" class="form-control"/><br><br>
 	
         <input type="submit" name="submit" class="btn btn-lg btn-primary btn-block"/>
 	
     </form>
+    
 </div>
 
 

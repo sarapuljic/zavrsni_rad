@@ -8,5 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="/public/css/bootstrap/signin.css"/>
 	</head>
 	<body>
+            <div class="page-header">
+                HEADER
+            </div>
 	
 	

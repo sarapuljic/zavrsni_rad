@@ -18,12 +18,7 @@ class PoslodavacController extends Core\Controller{
             $this->set("kategorije_poslova", $kategorije);
 			
 	$drzave = $this->dohvatiDrzavu();
-            $this->set("drzave", $drzave);
-                                
-        //$check = $this->korisnikPostoji();
-	//$this->set("korisnik", $check);
-        //var_dump($check);
-        
+            $this->set("drzave", $drzave);           
     }       
  
     public function dohvatiVps(){
@@ -50,33 +45,40 @@ class PoslodavacController extends Core\Controller{
 	return $drzave; 
     }
         
-    //public function korisnikPostoji(){
-    //	$check = new Poslodavac();
-    //	$check = $check->korisnikPostoji();
-    //	return $check; 
-    //}
+    public function korisnikPostoji(){
+    	$postojiLiKorisnikUBazi = new Poslodavac();
+    	$postojiLiKorisnikUBazi = $postojiLiKorisnikUBazi->korisnikPostoji();
+    	return $postojiLiKorisnikUBazi; 
+    }
+    
+    public function dohvatiPoslodavca(){
+	$poslodavac = new Poslodavac();
+	$poslodavac = $poslodavac->dohvatiPoslodavca();
+	return $poslodavac; 
+    }
+	
     
     public function spremanje(){
-        
        
         $this->renderPage=false;
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
-            //$errors = $_SESSION['errors'];
             $errors = array();
             $_SESSION['errors'] = $errors;
             $podaciKorisnik = array();
             $podaciPoslodavac = array();
            
-            
-		
 		if(empty($_POST['e_mail'])){
                     $_SESSION['errors']['e_mail'] = "Unesi e-mail!";
-                    //$this->_model->korisnikPostoji();
                 }else{
-                    $podaciKorisnik[] = $_POST['e_mail'];
-		}
-               
+                    
+                    //if (mysqli_num_rows()!= 0){
+                    //    echo  "This username is taken";
+                   // }else{
+                        $podaciKorisnik[] = $_POST['e_mail'];  
+                    //}                      
+                }
+                                                    
 		if(empty($_POST['lozinka'])){
                     $_SESSION['errors']['lozinka'] = "Unesi lozinku!";		
 		}else{
@@ -84,34 +86,44 @@ class PoslodavacController extends Core\Controller{
 		}
 
 		if(empty($_POST['ponovite_lozinku'])){
-                    $_SESSION['errors']['ponovite_lozinku'] = "Unesi ponovljenu lozinku!";
+                    $_SESSION['errors']['ponovite_lozinku'] = "Unesi ponovljenu "
+                            . "lozinku!";
 		}else{
 		}
 		
 		if($_POST['lozinka'] != $_POST['ponovite_lozinku']) {
-                    $_SESSION['errors']['ponovite_lozinku'] = "Lozinke nisu iste";
+                    $_SESSION['errors']['ponovite_lozinku'] = "Lozinke nisu "
+                            . "iste";
                 }
 
 		if(empty($_POST['ime_kontakt_osobe'])){
-                    $_SESSION['errors']['ime_kontakt_osobe'] = "Unesi ime kontakt osobe!";
+                    $_SESSION['errors']['ime_kontakt_osobe'] = "Unesi ime "
+                            . "kontakt osobe!";
 		}else{	
-                    if(!preg_match("/^[a-zA-Z ]*$/", $_POST['ime_kontakt_osobe'])){
- 			$_SESSION['errors']['ime_kontakt_osobe'] = "Dozvoljen unos slova i razmaka!"; 
+                    if(!preg_match("/^[a-zA-Z ]*$/", $_POST['ime_kontakt_'
+                        . 'osobe'])){
+ 			$_SESSION['errors']['ime_kontakt_osobe'] = "Dozvoljen "
+                                . "unos slova i razmaka!"; 
                     }
                             $podaciPoslodavac[] = $_POST['ime_kontakt_osobe'];
 		}
 		
 		if(empty($_POST['prezime_kontakt_osobe'])){
-                    $_SESSION['errors']['prezime_kontakt_osobe'] = "Unesi prezime kontakt osobe!";
+                    $_SESSION['errors']['prezime_kontakt_osobe'] = "Unesi "
+                            . "prezime kontakt osobe!";
                 }else{
-                    if(!preg_match("/^[a-zA-Z ]*$/", $_POST['prezime_kontakt_osobe'])){
- 			$_SESSION['errors']['prezime_kontakt_osobe'] = "Dozvoljen unos slova i razmaka!"; 
+                    if(!preg_match("/^[a-zA-Z ]*$/", $_POST['prezime_kontakt_'
+                        . 'osobe'])){
+ 			$_SESSION['errors']['prezime_kontakt_osobe'] = 
+                                "Dozvoljen unos slova i razmaka!"; 
                     }
-                            $podaciPoslodavac[] = $_POST['prezime_kontakt_osobe'];
+                            $podaciPoslodavac[] = $_POST['prezime_kontakt_'
+                                . 'osobe'];
 		}
 		
 		if(empty($_POST['vrsta_pravnog_subjekta'])){
-                    $_SESSION['errors']['vrsta_pravnog_subjekta'] = "Unesi vrstu pravnog subjekta tvrtke!";
+                    $_SESSION['errors']['vrsta_pravnog_subjekta'] = "Unesi vrstu "
+                            . "pravnog subjekta tvrtke!";
 		}else{
                     $podaciPoslodavac[] = $_POST['vrsta_pravnog_subjekta'];
 		}
@@ -120,7 +132,8 @@ class PoslodavacController extends Core\Controller{
                     $_SESSION['errors']['naziv_tvrtke']="Unesi naziv tvrtke!";
 		}else{
                     if (!preg_match("/^[a-zA-Z ]*$/", $_POST['naziv_tvrtke'])){
- 			$_SESSION['errors']['naziv_tvrtke'] = "Dozvoljen unos slova i razmaka!"; 
+ 			$_SESSION['errors']['naziv_tvrtke'] = "Dozvoljen unos "
+                                . "slova i razmaka!"; 
                     }
                             $podaciPoslodavac[] = $_POST['naziv_tvrtke'];
 		}
@@ -132,7 +145,8 @@ class PoslodavacController extends Core\Controller{
 		//	$errors['oib_tvrtke'] = "OIB mora sadržavati 11 znakova!";
 		//}			
                     if(!preg_match("/^[0-9]+$/", $_POST['oib_tvrtke'])){
-   			$_SESSION['errors']['oib_tvrtke'] = "Dozvoljen unos brojeva!";
+   			$_SESSION['errors']['oib_tvrtke'] = "Dozvoljen unos "
+                                . "brojeva!";
                     } 
                             $podaciPoslodavac[] = $_POST['oib_tvrtke'];		
 		}
@@ -141,28 +155,33 @@ class PoslodavacController extends Core\Controller{
                     $_SESSION['errors']['adresa'] = "Unesi adresu tvrtke!";
 		}else{
                     if(!preg_match("/^[a-zA-Z ]*$/", $_POST['adresa'])){
- 			$_SESSION['errors']['adresa'] = "Dozvoljen unos slova i razmaka!"; 
+ 			$_SESSION['errors']['adresa'] = "Dozvoljen unos slova "
+                                . "i razmaka!"; 
                     }
                             $podaciPoslodavac[] = $_POST['adresa'];
 		}
 		
 		if(empty($_POST['postanski_broj'])){
-			$_SESSION['errors']['postanski_broj'] = "Unesi poštanski broj!";
+			$_SESSION['errors']['postanski_broj'] = "Unesi poštanski "
+                                . "broj!";
 		}else{
 			//if (strlen($_POST['postanski_broj'])){
 			//	$errors['postanski_broj'] = "Poštanski broj sadrži 5 znakova!";
 			//}
                     if(!preg_match("/^[0-9]+$/", $_POST['postanski_broj'])){
-   			$_SESSION['errors']['postanski_broj'] = "Dozvoljen unos brojeva!";
+   			$_SESSION['errors']['postanski_broj'] = "Dozvoljen unos "
+                                . "brojeva!";
                     } 
                             $podaciPoslodavac[] = $_POST['postanski_broj'];
 		}
 		
 		if(empty($_POST['kontakt_broj'])){
-                    $_SESSION['errors']['kontakt_broj'] = "Unesi kontakt broj tvrtke!";
+                    $_SESSION['errors']['kontakt_broj'] = "Unesi kontakt broj "
+                            . "tvrtke!";
 		}else{
                     if(!preg_match("/^[0-9]+$/", $_POST['kontakt_broj'])){
-   			$_SESSION['errors']['kontakt_broj'] = "Dozvoljen unos brojeva!";
+   			$_SESSION['errors']['kontakt_broj'] = "Dozvoljen unos "
+                                . "brojeva!";
                     } 
                             $podaciPoslodavac[] = $_POST['kontakt_broj'];
 		}
@@ -186,34 +205,30 @@ class PoslodavacController extends Core\Controller{
 		}
 
 		if(empty($_POST['kategorije_poslova'])){
-                    $_SESSION['errors']['kategorije_poslova'] = "Unesi kategoriju posla!";
+                    $_SESSION['errors']['kategorije_poslova'] = "Unesi "
+                            . "kategoriju posla!";
 		}else{
                     $podaciPoslodavac[] = $_POST['kategorije_poslova'];
 		}
 
 		if(empty($_POST['djelatnost'])){
-                    $_SESSION['errors']['djelatnost'] = "Unesi djelatnost tvrtke!";
+                    $_SESSION['errors']['djelatnost'] = "Unesi djelatnost "
+                            . "tvrtke!";
 		}else{
                     $podaciPoslodavac[] = $_POST['djelatnost'];
 		}
-                
-               //var_dump($_SESSION['errors']);
-               //die();
-        
+                //var_dump($podaciPoslodavac);
+                //die();
         if(empty($_SESSION['errors'])){	
-            $this->_model->registrirajKorisnika($podaciKorisnik, $podaciPoslodavac);
+            $this->_model->registrirajKorisnika($podaciKorisnik, 
+                    $podaciPoslodavac);
             echo 'Uspješno ste se registrirali!';
-	}else{
-                
-            //$this->set('errors', $errors); //preko session-a		
+	}else{	
             $this->redirect("registracija");
         }
-        
-
         //session_destroy(); 
+        }
+        
     }
-
-	
 }
-
-}
+    

@@ -160,8 +160,9 @@ abstract class SQLQuery {
     		}
     	}
     	
-
+            //var_dump($sql);
         return $this->query($sql);
+        
 
     
     }
