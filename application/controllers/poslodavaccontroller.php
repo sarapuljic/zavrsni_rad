@@ -4,12 +4,11 @@ class PoslodavacController extends Core\Controller{
 
     public function registracija(){
         
+        //Postavljanje error-a 
         $this->set('errors', $_SESSION['errors']);
-            //pročitat session i izbrisat 
         
         $subjekti = $this->dohvatiVps();
             $this->set("vrsta_pravnog_subjekta", $subjekti); 
-	//var_dump($subjekti);
 			
 	$gradovi = $this->dohvatiGrad();
             $this->set("gradovi", $gradovi);
@@ -18,7 +17,7 @@ class PoslodavacController extends Core\Controller{
             $this->set("kategorije_poslova", $kategorije);
 			
 	$drzave = $this->dohvatiDrzavu();
-            $this->set("drzave", $drzave);           
+            $this->set("drzave", $drzave);    
     }       
  
     public function dohvatiVps(){
@@ -45,39 +44,46 @@ class PoslodavacController extends Core\Controller{
 	return $drzave; 
     }
         
-    public function korisnikPostoji(){
+    public function korisnikPostoji($e_mail){
     	$postojiLiKorisnikUBazi = new Poslodavac();
-    	$postojiLiKorisnikUBazi = $postojiLiKorisnikUBazi->korisnikPostoji();
+    	$postojiLiKorisnikUBazi = $postojiLiKorisnikUBazi->korisnikPostoji($e_mail);
     	return $postojiLiKorisnikUBazi; 
     }
-    
-    public function dohvatiPoslodavca(){
+
+    /*public function dohvatiPoslodavca(){
 	$poslodavac = new Poslodavac();
 	$poslodavac = $poslodavac->dohvatiPoslodavca();
 	return $poslodavac; 
-    }
+    }*/
 	
-    
+    //zavrsni.loc/poslodavci/spremanje
     public function spremanje(){
        
         $this->renderPage=false;
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
-
+                      
             $errors = array();
             $_SESSION['errors'] = $errors;
             $podaciKorisnik = array();
             $podaciPoslodavac = array();
-           
+         
 		if(empty($_POST['e_mail'])){
                     $_SESSION['errors']['e_mail'] = "Unesi e-mail!";
                 }else{
                     
-                    //if (mysqli_num_rows()!= 0){
-                    //    echo  "This username is taken";
-                   // }else{
-                        $podaciKorisnik[] = $_POST['e_mail'];  
-                    //}                      
-                }
+                    //$e_mail=         inicijalizirati da pročita e_mail iz $podaciKorisnik = array(); 
+                    
+                    if($this->korisnikPostoji($e_mail)){
+                        echo  "This username is taken";
+                    }else{
+                        $podaciKorisnik[] = $_POST['e_mail'];
+                        
+                        //var_dump();
+                        //die();
+                       
+                    }                   
+                } 
+                
                                                     
 		if(empty($_POST['lozinka'])){
                     $_SESSION['errors']['lozinka'] = "Unesi lozinku!";		
@@ -217,12 +223,13 @@ class PoslodavacController extends Core\Controller{
 		}else{
                     $podaciPoslodavac[] = $_POST['djelatnost'];
 		}
-                //var_dump($podaciPoslodavac);
-                //die();
+
         if(empty($_SESSION['errors'])){	
             $this->_model->registrirajKorisnika($podaciKorisnik, 
                     $podaciPoslodavac);
+
             echo 'Uspješno ste se registrirali!';
+            
 	}else{	
             $this->redirect("registracija");
         }

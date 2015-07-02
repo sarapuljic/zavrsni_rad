@@ -53,6 +53,13 @@ class PosloprimacController extends Core\Controller{
 	return $zupanija ;
     }
     
+    public function korisnikPostoji($e_mail){
+        $postojiLiKorisnikUBazi = new Posloprimac();
+        $postojiLiKorisnikUBazi = $postojiLiKorisnikUBazi ->korisnikPostoji($e_mail);
+        return $postojiLiKorisnikUBazi;     
+    }
+
+
     public function spremanje(){
         
         $this->renderPage=false;
@@ -64,15 +71,18 @@ class PosloprimacController extends Core\Controller{
             $podaciPosloprimac = array();
             $podaciRadnoIskustvo = array();
             $podaciObrazovanje = array();
-            
-            
-		
+                     		
 		if(empty($_POST['e_mail'])){
                     $_SESSION['errors']['e_mail'] = "Unesi e-mail!";
 		}else{
-                    $podaciKorisnik[] = $_POST['e_mail'];
+                    
+                    if($this->korisnikPostoji($e_mail)){
+                        echo "E-mail već postoji u bazi.";
+                    }else{
+                        $podaciKorisnik[] = $_POST['e_mail'];
+                    }  
 		}
-               		
+                         		
 		if(empty($_POST['lozinka'])){
                     $_SESSION['errors']['lozinka'] = "Unesi lozinku!";		
 		}else{

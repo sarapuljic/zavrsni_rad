@@ -62,10 +62,14 @@ abstract class SQLQuery {
         if ($param == null) {
             $param = array();
         }
-
+            
         try {
             $stmt = $this->_dbh->prepare($query);
+            //var_dump($query);
+            //die();
             $stmt->execute($param);
+            
+            
             $this->_rowCount = $stmt->rowCount();
             
             
@@ -84,6 +88,7 @@ abstract class SQLQuery {
         } catch (PDOException $ex) {
             return false;
         }
+        
     }
 
 /**

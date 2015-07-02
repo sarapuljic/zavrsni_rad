@@ -17,22 +17,28 @@ class Poslodavac extends Core\Model{
         //Unos korisnika
 	$this->insert('korisnik', $this->_koloneKorisnik, $podaciKorisnik);
 		
-	$id = $this->query('SELECT LAST_INSERT_ID();');			
+	$id = $this->query('SELECT LAST_INSERT_ID();');	
+        //var_dump($id);
+        //die();
 	$id = (int) $id[0]['LAST_INSERT_ID()'];			
 	array_unshift($podaciPoslodavac, $id);		
 	      
         //Unos poslodavca
         $this->insert('poslodavac', $this->_kolonePoslodavac, $podaciPoslodavac);
-		//var_dump($podaciPoslodavac);
-		//die();	
+
 	}
 	
-    public function korisnikPostoji(){
-        $postojiLiKorisnikUBazi = $this->query('SELECT * FROM korisnik '
-                . 'WHERE e_mail =' . $e_mail );
+    public function korisnikPostoji($e_mail){
+        $postojiLiKorisnikUBazi = $this->query('SELECT * FROM korisnik WHERE e_mail = :e_mail', 
+                array(
+                    ":e_mail" => $e_mail
+                ));
+        
+        //var_dump($postojiLiKorisnikUBazi);
+        //die();
     }
 			
-    public function logirajKorisnika($podaciKorisnik){
+    public function logirajKorisnika(){
 	
     }
     

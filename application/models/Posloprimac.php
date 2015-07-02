@@ -40,7 +40,7 @@ class Posloprimac extends Core\Model{
 	$idRadnoIskustvo = (int) $idRadnoIskustvo[0]['id'];
         array_push($podaciPosloprimac, $idRadnoIskustvo);
              
-       // Kreiranje obrazovanja
+       //Kreiranje obrazovanja
         $this->insert('obrazovanje', $this->_koloneObrazovanje, 
                 $podaciObrazovanje);
         
@@ -52,6 +52,13 @@ class Posloprimac extends Core\Model{
         //Ubacivanje posloprimca
         $this->insert('posloprimac', $this->_kolonePosloprimac, 
                 $podaciPosloprimac);  
+    }
+    
+    public function korisnikPostoji($e_mail){
+        $postojiLiKorisnikUBazi = $this->query('SELECT * FROM korisnik WHERE e_mail = :e_mail',
+                    array(
+                        "e_mail" => $e_mail
+                    ));
     }
 
     public function logirajKorisnika(){
