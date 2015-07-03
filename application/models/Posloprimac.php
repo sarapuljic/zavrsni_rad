@@ -59,6 +59,7 @@ class Posloprimac extends Core\Model{
                     array(
                         "e_mail" => $e_mail
                     ));
+        return $e_mail;
     }
 
     public function logirajKorisnika(){

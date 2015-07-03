@@ -34,12 +34,18 @@ class Poslodavac extends Core\Model{
                     ":e_mail" => $e_mail
                 ));
         
-        //var_dump($postojiLiKorisnikUBazi);
-        //die();
-    }
+        return $postojiLiKorisnikUBazi;
+    }   
 			
-    public function logirajKorisnika(){
-	
+    public function logirajKorisnika($e_mail, $lozinka){
+        session_start();
+	$logiranjeKorisnika = $this->query('SELECT * FROM korisnik WHERE '
+                . 'e_mail = :e_mail, lozinka = :lozinka',
+                array(
+                    ":e_mail" => $e_mail,
+                    ":lozinka" => $lozinka
+                ));
+                return logiranjeKorisnika;
     }
     
 }

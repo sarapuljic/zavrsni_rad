@@ -65,14 +65,12 @@ abstract class SQLQuery {
             
         try {
             $stmt = $this->_dbh->prepare($query);
-            //var_dump($query);
-            //die();
+            
             $stmt->execute($param);
             
-            
+           
             $this->_rowCount = $stmt->rowCount();
-            
-            
+                     
 
             if ($this->_rowCount == 0) {
                 return false;
@@ -81,10 +79,12 @@ abstract class SQLQuery {
             if (preg_match("/select/i", $query)) {// SELECT statment was used
                 $result = $stmt->fetchAll();
             } else {
-                $result = true;
+                $result = true;   
             }
 
             return $result;
+//          var_dump($query);
+//            die();
         } catch (PDOException $ex) {
             return false;
         }
@@ -159,16 +159,19 @@ abstract class SQLQuery {
     	for($i=0; $i<$count; $i++){
     		$value=$values[$i];
     		if($i==$count-1){
+                      
     			$sql .= '"' . $value. '");';
     		}else{
+                      
     		$sql .= '"' . $value. '", ';
     		}
     	}
-    	
-            //var_dump($sql);
+     
+
         return $this->query($sql);
         
-
+//        var_dump($sql);
+//        die();
     
     }
     

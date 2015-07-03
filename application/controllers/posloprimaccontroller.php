@@ -4,7 +4,14 @@ class PosloprimacController extends Core\Controller{
 
     public function registracija(){
         
-        $this->set('errors', $_SESSION['errors']);
+        if (isset($_SESSION['errors'])) {
+            $this->set('errors', $_SESSION['errors']);
+            $this->set('fields', $_SESSION['fields']);
+            
+            unset($_SESSION['errors']);
+            unset($_SESSION['fields']);
+        }
+        
         
         $gradovi = $this->dohvatiGrad();
             $this->set("gradovi", $gradovi);
@@ -72,12 +79,13 @@ class PosloprimacController extends Core\Controller{
             $podaciRadnoIskustvo = array();
             $podaciObrazovanje = array();
                      		
-		if(empty($_POST['e_mail'])){
+		if(empty($_POST['e_mail'] && filter_var($_POST['e_mail'], FILTER_VALIDATE_EMAIL))){
                     $_SESSION['errors']['e_mail'] = "Unesi e-mail!";
 		}else{
                     
+                    $e_mail = $_POST['e_mail'];
                     if($this->korisnikPostoji($e_mail)){
-                        echo "E-mail već postoji u bazi.";
+                        $_SESSION['errors']['e_mail'] = "E-mail već postoji";
                     }else{
                         $podaciKorisnik[] = $_POST['e_mail'];
                     }  
@@ -304,6 +312,7 @@ class PosloprimacController extends Core\Controller{
                         $podaciPosloprimac);
                 echo 'Uspješno ste se registrirali!';               
             } else{
+                $_SESSION["fields"] = $_POST;
                 $this->redirect("registracija");
             }
             
